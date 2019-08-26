@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Weather App</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="loading_your_forecast">Loading your forecast…</string>
+    <string name="error_message">We are unable to contact the server</string>
+    <string name="retry">Retry</string>
+    <string name="retrieving_your_location_please_wait">Retrieving your location please wait</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="max">Max</string>
+    <string name="min">Min</string>
 </resources>

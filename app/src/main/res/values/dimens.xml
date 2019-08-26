@@ -1,3 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="eight_device_pixels">8dp</dimen>
+    <dimen name="twenty_device_pixels">20dp</dimen>
+    <dimen name="twelve_device_pixels">12dp</dimen>
+    <dimen name="four_device_pixels">4dp</dimen>
+    <dimen name="sixty_four_device_pixels">64dp</dimen>
 </resources>

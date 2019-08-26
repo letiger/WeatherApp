@@ -6,7 +6,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class Main {
-    private String temp;
+    private Double temp;
     private String temp_min;
     private String humidity;
     private String pressure;

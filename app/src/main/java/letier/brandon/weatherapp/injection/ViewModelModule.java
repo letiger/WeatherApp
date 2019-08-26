@@ -6,7 +6,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
-import letier.brandon.weatherapp.ui.MainViewModel;
+import letier.brandon.weatherapp.ui.home.MainViewModel;
 
 @Module
 abstract class ViewModelModule {

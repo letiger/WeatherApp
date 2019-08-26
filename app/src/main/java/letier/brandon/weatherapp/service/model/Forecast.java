@@ -1,5 +1,7 @@
 package letier.brandon.weatherapp.service.model;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -14,4 +16,5 @@ public class Forecast {
     private String cod;
     private String id;
     private String base;
+    private List<Weather> weather;
 }
