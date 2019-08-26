@@ -9,6 +9,7 @@ import dagger.android.DaggerApplication;
 import dagger.android.DispatchingAndroidInjector;
 import letier.brandon.weatherapp.injection.DaggerWeatherAppComponent;
 import letier.brandon.weatherapp.injection.WeatherAppComponent;
+import timber.log.Timber;
 
 public class WeatherApplication extends DaggerApplication {
 
@@ -19,6 +20,7 @@ public class WeatherApplication extends DaggerApplication {
     public void onCreate() {
         super.onCreate();
 
+        Timber.plant(new Timber.DebugTree());
         DaggerWeatherAppComponent.builder().application(this).build().inject(this);
     }
 

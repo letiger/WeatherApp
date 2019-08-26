@@ -9,13 +9,17 @@ import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 import dagger.android.support.AndroidSupportInjectionModule;
+import letier.brandon.weatherapp.repository.ForecastRepositoryModule;
+import letier.brandon.weatherapp.service.ForecastWebServiceModule;
 
 @Singleton
 @Component(modules = {
         AndroidSupportInjectionModule.class,
         AppModule.class,
         ViewModelModule.class,
-        ActivityModule.class
+        ActivityModule.class,
+        ForecastWebServiceModule.class,
+        ForecastRepositoryModule.class
 })
 public interface WeatherAppComponent extends AndroidInjector<DaggerApplication> {
 
