@@ -8,23 +8,24 @@ import android.support.annotation.NonNull;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import letier.brandon.weatherapp.repository.ForecastRepository;
 import letier.brandon.weatherapp.service.model.Forecast;
 import letier.brandon.weatherapp.util.Resource;
+import letier.brandon.weatherapp.util.SchedulerProvider;
 
 public class MainViewModel extends AndroidViewModel {
     private final MutableLiveData<Resource<Forecast>> forecastMutable = new MutableLiveData<>();
-    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private final ForecastRepository repository;
+    private final SchedulerProvider provider;
 
     @Inject
-    MainViewModel(@NonNull Application application, ForecastRepository repository) {
+    MainViewModel(@NonNull Application application, ForecastRepository repository, SchedulerProvider provider) {
         super(application);
         this.repository = repository;
+        this.provider = provider;
     }
 
     LiveData<Resource<Forecast>> getForecast() {
@@ -34,8 +35,7 @@ public class MainViewModel extends AndroidViewModel {
     void initialize(Double latitude, Double longitude) {
 
         Disposable disposable = repository.getDailyForecastByLocation(latitude, longitude)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(provider.applySchedulersSingle())
                 .doOnSubscribe(disposable1 -> forecastMutable.setValue(Resource.loading()))
                 .subscribe(forecast -> forecastMutable.setValue(Resource.success(forecast)),
                         throwable -> forecastMutable.setValue(Resource.error()));

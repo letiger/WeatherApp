@@ -3,12 +3,20 @@ package letier.brandon.weatherapp.injection;
 import android.app.Application;
 import android.content.Context;
 
-import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
+import letier.brandon.weatherapp.util.SchedulerProvider;
 
 @Module
-abstract class AppModule {
+class AppModule {
 
-    @Binds
-    abstract Context provideContext(Application app);
+    @Provides
+    Context provideContext(Application app) {
+        return app;
+    }
+
+    @Provides
+    SchedulerProvider provideSchedulerProvider() {
+        return SchedulerProvider.DEFAULT;
+    }
 }

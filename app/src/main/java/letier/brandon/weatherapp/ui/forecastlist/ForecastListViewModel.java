@@ -12,30 +12,32 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import letier.brandon.weatherapp.repository.ForecastRepository;
 import letier.brandon.weatherapp.service.City;
 import letier.brandon.weatherapp.ui.forecastlist.adapter.ForecastDto;
 import letier.brandon.weatherapp.util.Resource;
+import letier.brandon.weatherapp.util.SchedulerProvider;
 
 public class ForecastListViewModel extends AndroidViewModel {
 
     private static final int MAX = 10;
     private final ForecastRepository repository;
+    private final SchedulerProvider provider;
     private final MutableLiveData<Resource<List<ForecastDto>>> forecastListMutable =
             new MutableLiveData<>();
-    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Inject
-    public ForecastListViewModel(@NonNull Application application, ForecastRepository repository) {
+    ForecastListViewModel(@NonNull Application application, ForecastRepository repository,
+                                 SchedulerProvider provider) {
         super(application);
         this.repository = repository;
+        this.provider = provider;
     }
 
-    public LiveData<Resource<List<ForecastDto>>> getForecastList() {
+    LiveData<Resource<List<ForecastDto>>> getForecastList() {
         return forecastListMutable;
     }
 
@@ -58,8 +60,7 @@ public class ForecastListViewModel extends AndroidViewModel {
 
                     return forecastList;
                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(provider.applySchedulersSingle())
                 .doOnSubscribe(disposable1 -> forecastListMutable.setValue(Resource.loading()))
                 .subscribe(forecasts -> forecastListMutable.setValue(Resource.success(forecasts)),
                         throwable -> forecastListMutable.setValue(Resource.error()));
