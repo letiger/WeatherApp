@@ -14,7 +14,7 @@ public class Forecast {
     private String dt;
     private String name;
     private String cod;
-    private String id;
+    private int id;
     private String base;
     private List<Weather> weather;
 }

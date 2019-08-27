@@ -9,4 +9,5 @@
     <string name="pressure">Pressure</string>
     <string name="max">Max</string>
     <string name="min">Min</string>
+    <string name="forecast_list">Forecast List</string>
 </resources>
