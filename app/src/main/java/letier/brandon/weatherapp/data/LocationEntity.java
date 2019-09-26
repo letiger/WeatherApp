@@ -4,13 +4,15 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.io.Serializable;
+
 @Entity
-public class LocationEntity {
+public class LocationEntity implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     @NonNull
-    private String word;
+    private String location;
 
     public int getId() {
         return id;
@@ -20,10 +22,10 @@ public class LocationEntity {
     }
 
     @NonNull
-    public String getWord() {
-        return word;
+    public String getLocation() {
+        return location;
     }
-    public void setWord(@NonNull String word) {
-        this.word = word;
+    public void setLocation(@NonNull String location) {
+        this.location = location;
     }
 }

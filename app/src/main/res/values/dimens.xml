@@ -6,4 +6,8 @@
     <dimen name="four_device_pixels">4dp</dimen>
     <dimen name="sixty_four_device_pixels">64dp</dimen>
     <dimen name="very_large_margin" >34dp</dimen>
+    <dimen name="button_padding">8dp</dimen>
+    <dimen name="button_margin">14dp</dimen>
+    <dimen name="button_radius">8dp</dimen>
+    <dimen name="button_stroke">1dp</dimen>
 </resources>

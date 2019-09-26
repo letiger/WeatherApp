@@ -19,4 +19,16 @@
     <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- Light Touch Button layout -->
+    <style name="Ma.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/button_state</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/button_text_state</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingLeft">@dimen/button_padding</item>
+        <item name="android:paddingRight">@dimen/button_padding</item>
+        <item name="android:layout_marginTop">@dimen/button_margin</item>
+        <item name="android:layout_marginBottom">@dimen/button_margin</item>
+    </style>
 </resources>

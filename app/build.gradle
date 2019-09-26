@@ -85,4 +85,8 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.2'
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
+
+    // Paging
+    implementation "android.arch.paging:runtime:1.0.1"
+    implementation "android.arch.paging:rxjava2:1.0.1"
 }

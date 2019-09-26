@@ -5,6 +5,8 @@ import dagger.android.ContributesAndroidInjector;
 import letier.brandon.weatherapp.service.GpsService;
 import letier.brandon.weatherapp.ui.forecast.ForecastActivity;
 import letier.brandon.weatherapp.ui.forecastlist.ForecastListActivity;
+import letier.brandon.weatherapp.ui.wordlist.LocationListActivity;
+import letier.brandon.weatherapp.ui.wordlist.add.AddLocationActivity;
 
 @Module
 abstract class ActivityModule {
@@ -13,4 +15,13 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract ForecastListActivity bindForecastListActivity();
+
+    @ContributesAndroidInjector
+    abstract LocationListActivity bindLocationListActivity();
+
+    @ContributesAndroidInjector
+    abstract AddLocationActivity bindAddLocationActivity();
+
+    @ContributesAndroidInjector
+    abstract GpsService bindGpsService();
 }

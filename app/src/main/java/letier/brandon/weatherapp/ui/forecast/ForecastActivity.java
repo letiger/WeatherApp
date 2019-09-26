@@ -14,7 +14,6 @@ import android.os.Bundle;
 import java.util.Date;
 
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -32,7 +31,6 @@ import letier.brandon.weatherapp.service.GpsService;
 import letier.brandon.weatherapp.service.model.Forecast;
 import letier.brandon.weatherapp.service.model.Main;
 import letier.brandon.weatherapp.service.model.Weather;
-import letier.brandon.weatherapp.ui.forecastlist.ForecastListActivity;
 import letier.brandon.weatherapp.util.Resource;
 import letier.brandon.weatherapp.util.Strings;
 
@@ -52,7 +50,6 @@ public class ForecastActivity extends AppCompatActivity {
     private LinearLayout retryContainer;
     private BroadcastReceiver receiver;
     private ForecastViewModel viewModel;
-    private FloatingActionButton fab;
 
     @Inject
     ViewModelFactory factory;
@@ -181,12 +178,6 @@ public class ForecastActivity extends AppCompatActivity {
                 startGpsService();
             }
         });
-
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> {
-            Intent intent = new Intent(this, ForecastListActivity.class);
-            startActivity(intent);
-        });
     }
 
     private void populateView(Resource<Forecast> resource) {
@@ -247,11 +238,9 @@ public class ForecastActivity extends AppCompatActivity {
         if (isProgressShowing) {
             progress.setVisibility(View.VISIBLE);
             main.setVisibility(View.GONE);
-            fab.setVisibility(View.GONE);
         } else {
             progress.setVisibility(View.GONE);
             main.setVisibility(View.VISIBLE);
-            fab.setVisibility(View.VISIBLE);
         }
     }
 }

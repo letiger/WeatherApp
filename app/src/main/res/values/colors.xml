@@ -6,4 +6,8 @@
     <color name="colorAccent">#91394c</color>
     <color name="colorText">#34353C</color>
     <color name="background">#f0f0f0</color>
+    <color name="button_enabled">@color/colorAccent</color>
+    <color name="button_disabled">#D19DA9</color>
+    <color name="buttonDisabled">#dcddde</color>
+    <color name="buttonEnabled">@color/colorAccent</color>
 </resources>

@@ -8,9 +8,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {LocationEntity.class}, version=1, exportSchema = false)
+@Database(entities = {LocationEntity.class}, version=3, exportSchema = false)
 public abstract class LocationDatabase extends RoomDatabase {
-    private static final String DB_NAME = "word_database";
+    private static final String DB_NAME = "location_database";
+    private static final int MAX_LOCATIONS = 1000;
     private static volatile LocationDatabase INSTANCE;
 
     public static LocationDatabase init(final Context context) {
@@ -18,7 +19,8 @@ public abstract class LocationDatabase extends RoomDatabase {
             synchronized (LocationDatabase.class) {
                 INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                         LocationDatabase.class, DB_NAME)
-                        .addCallback(roomDbCallback)
+//                        .addCallback(roomDbCallback)
+                        .fallbackToDestructiveMigration()
                         .build();
             }
         }
@@ -49,11 +51,12 @@ public abstract class LocationDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             mDao.deleteAll();
             LocationEntity word = new LocationEntity();
-            word.setWord("Hello");
-            mDao.insertWord(word);
-            word = new LocationEntity();
-            word.setWord("World");
-            mDao.insertWord(word);
+
+            for (int i=0; i< MAX_LOCATIONS; i++) {
+                int  wordCount = i+1;
+                word.setLocation("Location : " + wordCount );
+                mDao.insertLocation(word);
+            }
             return null;
         }
     }

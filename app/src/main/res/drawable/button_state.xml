@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--https://developer.android.com/reference/android/graphics/drawable/StateListDrawable.html#attr_android:state_enabled-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Disable button-->
+    <item android:state_enabled="false" >
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/button_radius" />
+            <solid android:color="@color/buttonDisabled" />
+            <stroke
+                android:width="@dimen/button_stroke"
+                android:color="@color/button_disabled" />
+        </shape>
+    </item>
+
+
+    <!--Ripple effect when pressing an enabled button-->
+    <item android:state_pressed="true" >
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/button_radius" />
+            <solid android:color="@android:color/white" />
+            <stroke
+                android:width="@dimen/button_stroke"
+                android:color="@color/buttonEnabled" />
+        </shape>
+    </item>
+
+    <!--Last state is the default-->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/button_radius" />
+            <solid android:color="@android:color/white" />
+            <stroke
+                android:width="@dimen/button_stroke"
+                android:color="@color/buttonEnabled" />
+        </shape>
+    </item>
+</selector>

@@ -8,6 +8,8 @@ import dagger.Module;
 import dagger.multibindings.IntoMap;
 import letier.brandon.weatherapp.ui.forecastlist.ForecastListViewModel;
 import letier.brandon.weatherapp.ui.forecast.ForecastViewModel;
+import letier.brandon.weatherapp.ui.wordlist.LocationListViewModel;
+import letier.brandon.weatherapp.ui.wordlist.add.AddLocationViewModel;
 
 @Module
 abstract class ViewModelModule {
@@ -21,6 +23,17 @@ abstract class ViewModelModule {
     @ViewModelKey(ForecastListViewModel.class)
     abstract ViewModel bindForecastListViewModel(ForecastListViewModel viewModel);
 
-                                         @Binds
-    abstract ViewModelProvider.Factory bindViewModelFractory(ViewModelFactory factory);
+    @Binds
+    @IntoMap
+    @ViewModelKey(LocationListViewModel.class)
+    abstract ViewModel bindLocationListViewModel(LocationListViewModel viewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddLocationViewModel.class)
+    abstract ViewModel bindAddLocationViewModel(AddLocationViewModel viewModel);
+
+
+    @Binds
+    abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);
 }
