@@ -54,9 +54,6 @@ public class ForecastActivity extends AppCompatActivity {
     @Inject
     ViewModelFactory factory;
 
-    @Inject
-    GpsService service;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -128,7 +125,6 @@ public class ForecastActivity extends AppCompatActivity {
     }
 
     @Override protected void onDestroy() {
-        service = null;
         if (receiver != null) {
             unregisterReceiver(receiver);
         }

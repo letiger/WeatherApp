@@ -9,8 +9,8 @@ public class ForecastDto {
     private String name;
     private Double temp_max;
 
-    public ForecastDto(int id, Forecast forecast) {
-        this.id = id + forecast.getId();
+    public ForecastDto(Forecast forecast) {
+        this.id = forecast.getId();
         this.name = forecast.getName();
         this.temp_max = forecast.getMain().getTemp();
     }

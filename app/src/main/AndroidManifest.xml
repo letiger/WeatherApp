@@ -27,13 +27,15 @@
         <activity
             android:name=".ui.forecastlist.ForecastListActivity"
             android:label="@string/title_activity_main" />
-        <activity android:name=".ui.wordlist.LocationListActivity" >
+        <activity android:name=".ui.wordlist.LocationListActivity" />
+
+        <activity android:name=".ui.wordlist.add.AddLocationActivity" />
+        <activity android:name=".ui.DashboardActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.wordlist.add.AddLocationActivity" />
 
         <service android:name=".service.GpsService"/>
     </application>

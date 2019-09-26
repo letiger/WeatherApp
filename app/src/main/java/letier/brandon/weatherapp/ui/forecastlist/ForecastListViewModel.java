@@ -50,13 +50,11 @@ public class ForecastListViewModel extends AndroidViewModel {
                 repository.getDailyForecastByCity(City.POLOKWANE),
                 (bloem, capeTown, durban, Joburg, polokwane) -> {
                     List<ForecastDto> forecastList = new ArrayList<>();
-                    for (int i = 0; i < MAX; i++) {
-                        forecastList.add(new ForecastDto(i,bloem));
-                        forecastList.add(new ForecastDto(i,capeTown));
-                        forecastList.add(new ForecastDto(i,durban));
-                        forecastList.add(new ForecastDto(i,Joburg));
-                        forecastList.add(new ForecastDto(i,polokwane));
-                    }
+                        forecastList.add(new ForecastDto(bloem));
+                        forecastList.add(new ForecastDto(capeTown));
+                        forecastList.add(new ForecastDto(durban));
+                        forecastList.add(new ForecastDto(Joburg));
+                        forecastList.add(new ForecastDto(polokwane));
 
                     return forecastList;
                 })
