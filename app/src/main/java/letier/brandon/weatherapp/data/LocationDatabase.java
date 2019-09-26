@@ -19,7 +19,7 @@ public abstract class LocationDatabase extends RoomDatabase {
             synchronized (LocationDatabase.class) {
                 INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                         LocationDatabase.class, DB_NAME)
-//                        .addCallback(roomDbCallback)
+                        .addCallback(roomDbCallback)
                         .fallbackToDestructiveMigration()
                         .build();
             }
