@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context=".ui.home.MainActivity">
+    tools:context=".ui.forecast.ForecastActivity">
 
     <!--Main -->
     <LinearLayout

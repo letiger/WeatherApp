@@ -9,7 +9,7 @@ import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 import dagger.android.support.AndroidSupportInjectionModule;
-import letier.brandon.weatherapp.repository.ForecastRepositoryModule;
+import letier.brandon.weatherapp.repository.forecast.ForecastRepositoryModule;
 import letier.brandon.weatherapp.service.ForecastWebServiceModule;
 
 @Singleton

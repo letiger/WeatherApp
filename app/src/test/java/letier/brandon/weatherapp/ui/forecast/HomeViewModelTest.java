@@ -1,4 +1,4 @@
-package letier.brandon.weatherapp.ui.home;
+package letier.brandon.weatherapp.ui.forecast;
 
 import android.app.Application;
 import android.arch.core.executor.testing.InstantTaskExecutorRule;
@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import io.reactivex.Single;
-import letier.brandon.weatherapp.repository.ForecastRepository;
+import letier.brandon.weatherapp.repository.forecast.ForecastRepository;
 import letier.brandon.weatherapp.service.model.Forecast;
 import letier.brandon.weatherapp.util.Resource;
 import letier.brandon.weatherapp.util.ResourceState;
@@ -27,7 +27,7 @@ public class HomeViewModelTest {
     private static final double latitude = 37.421998333333335;
     private static final double longitude = -122.08400000000002;
 
-    private MainViewModel viewModel;
+    private ForecastViewModel viewModel;
     private final Forecast forecast = Forecast.builder()
             .name(NAME)
             .build();
@@ -41,7 +41,7 @@ public class HomeViewModelTest {
     @Before
     public void setupViewModel() {
         MockitoAnnotations.initMocks(this);
-        viewModel = new MainViewModel(application, repository, provider);
+        viewModel = new ForecastViewModel(application, repository, provider);
     }
 
     @Test

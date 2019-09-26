@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import letier.brandon.weatherapp.repository.ForecastRepository;
+import letier.brandon.weatherapp.repository.forecast.ForecastRepository;
 import letier.brandon.weatherapp.service.City;
 import letier.brandon.weatherapp.ui.forecastlist.adapter.ForecastDto;
 import letier.brandon.weatherapp.util.Resource;
@@ -63,7 +63,7 @@ public class ForecastListViewModel extends AndroidViewModel {
                 .compose(provider.applySchedulersSingle())
                 .doOnSubscribe(disposable1 -> forecastListMutable.setValue(Resource.loading()))
                 .subscribe(forecasts -> forecastListMutable.setValue(Resource.success(forecasts)),
-                        throwable -> forecastListMutable.setValue(Resource.error()));
+                        throwable -> forecastListMutable.setValue(Resource.error(throwable.getMessage())));
 
         compositeDisposable.add(disposable);
     }

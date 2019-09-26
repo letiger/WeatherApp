@@ -15,7 +15,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.List;
 
 import io.reactivex.Single;
-import letier.brandon.weatherapp.repository.ForecastRepository;
+import letier.brandon.weatherapp.repository.forecast.ForecastRepository;
 import letier.brandon.weatherapp.service.City;
 import letier.brandon.weatherapp.service.model.Forecast;
 import letier.brandon.weatherapp.service.model.Main;

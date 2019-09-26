@@ -1,4 +1,4 @@
-package letier.brandon.weatherapp.ui.home;
+package letier.brandon.weatherapp.ui.forecast;
 
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
@@ -36,7 +36,7 @@ import letier.brandon.weatherapp.ui.forecastlist.ForecastListActivity;
 import letier.brandon.weatherapp.util.Resource;
 import letier.brandon.weatherapp.util.Strings;
 
-public class MainActivity extends AppCompatActivity {
+public class ForecastActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 10;
 
     private LinearLayout progress;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView humidity;
     private LinearLayout retryContainer;
     private BroadcastReceiver receiver;
-    private MainViewModel viewModel;
+    private ForecastViewModel viewModel;
     private FloatingActionButton fab;
 
     @Inject
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         initializeLayout();
 
         viewModel = ViewModelProviders.of(this, factory)
-                .get(MainViewModel.class);
+                .get(ForecastViewModel.class);
 
         // If no permissions is needed, carry on with the flow.
         if (!checkPermissions()) {
@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.app_name);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         progress = findViewById(R.id.progress_container);
         main = findViewById(R.id.main_container);

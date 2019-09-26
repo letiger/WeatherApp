@@ -1,4 +1,4 @@
-package letier.brandon.weatherapp.ui.home;
+package letier.brandon.weatherapp.ui.forecast;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -10,19 +10,19 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import letier.brandon.weatherapp.repository.ForecastRepository;
+import letier.brandon.weatherapp.repository.forecast.ForecastRepository;
 import letier.brandon.weatherapp.service.model.Forecast;
 import letier.brandon.weatherapp.util.Resource;
 import letier.brandon.weatherapp.util.SchedulerProvider;
 
-public class MainViewModel extends AndroidViewModel {
+public class ForecastViewModel extends AndroidViewModel {
     private final MutableLiveData<Resource<Forecast>> forecastMutable = new MutableLiveData<>();
     final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private final ForecastRepository repository;
     private final SchedulerProvider provider;
 
     @Inject
-    MainViewModel(@NonNull Application application, ForecastRepository repository, SchedulerProvider provider) {
+    ForecastViewModel(@NonNull Application application, ForecastRepository repository, SchedulerProvider provider) {
         super(application);
         this.repository = repository;
         this.provider = provider;
@@ -38,7 +38,7 @@ public class MainViewModel extends AndroidViewModel {
                 .compose(provider.applySchedulersSingle())
                 .doOnSubscribe(disposable1 -> forecastMutable.setValue(Resource.loading()))
                 .subscribe(forecast -> forecastMutable.setValue(Resource.success(forecast)),
-                        throwable -> forecastMutable.setValue(Resource.error()));
+                        throwable -> forecastMutable.setValue(Resource.error(throwable.getMessage())));
 
         compositeDisposable.add(disposable);
     }

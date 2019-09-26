@@ -1,4 +1,4 @@
-package letier.brandon.weatherapp.repository;
+package letier.brandon.weatherapp.repository.forecast;
 
 import android.content.Context;
 

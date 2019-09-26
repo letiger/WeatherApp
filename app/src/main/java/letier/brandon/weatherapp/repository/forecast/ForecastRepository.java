@@ -1,4 +1,4 @@
-package letier.brandon.weatherapp.repository;
+package letier.brandon.weatherapp.repository.forecast;
 
 import io.reactivex.Single;
 import letier.brandon.weatherapp.service.model.Forecast;
